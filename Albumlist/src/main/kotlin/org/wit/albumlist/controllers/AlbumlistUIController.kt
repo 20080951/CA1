@@ -1,6 +1,7 @@
 package org.wit.albumlist.controllers
 
 
+import jdk.nashorn.internal.objects.NativeString.search
 import mu.KotlinLogging
 import org.wit.albumlist.models.AlbumlistJSONStore
 import org.wit.albumlist.models.AlbumlistModel
@@ -21,21 +22,6 @@ class AlbumlistUIController : Controller() {
         var aAlbumlist = AlbumlistModel(title = _title, description = _description, duration = _duration)
         albumlists.create(aAlbumlist)
         logger.info("Placemark Added")
-    }
-    fun deleteAlbum(){
-        fun delete() {
-            albumlistView.listAlbumlists(albumlists)
-            var searchId = albumlistView.getId()
-            val aAlbumlist = search(searchId)
-
-            if(aAlbumlist != null) {
-                albumlists.delete(aAlbumlist)
-                println("Albumlist Deleted...")
-                albumlistView.listAlbumlists(albumlists)
-            }
-            else
-                println("Albumlist Not Deleted...")
-        }
     }
 
     fun loadListScreen() {

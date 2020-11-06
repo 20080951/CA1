@@ -34,17 +34,7 @@ class MenuScreen : View("Album List Main Menu") {
                     }
                 }
             }
-            text("")
-            button("List Albums") {
 
-                isDefaultButton = true
-                useMaxWidth = true
-                action {
-                    runAsyncWithProgress {
-                        AlbumlistUIController.deleteAlbum()
-                    }
-                }
-            }
             text("")
             button("Exit") {
 
