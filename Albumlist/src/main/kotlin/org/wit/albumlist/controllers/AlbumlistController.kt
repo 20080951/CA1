@@ -29,7 +29,6 @@ class AlbumlistController {
                 3 -> list()
                 4 -> search()
                 5 -> delete()
-                -99 -> dummyData()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
             }

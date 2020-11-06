@@ -1,6 +1,7 @@
 package org.wit.albumlist.views
 
 
+import com.github.mm.coloredconsole.colored
 import org.wit.albumlist.models.AlbumlistJSONStore
 import org.wit.albumlist.models.AlbumlistModel
 
@@ -10,16 +11,18 @@ class AlbumlistView {
 
         var option : Int
         var input: String?
+colored {
 
-        println("MAIN MENU")
-        println(" 1. Add Albumlist")
-        println(" 2. Update Albumlist")
-        println(" 3. List All Albumlists")
-        println(" 4. Search Albumlists")
-        println(" 5. Delete Albumlist")
-        println("-1. Exit")
-        println()
-        print("Enter Option : ")
+    println("MAIN MENU".blue.bold.italic)
+    println(" 1. Add Albumlist".green.bold)
+    println(" 2. Update Albumlist".green.bold)
+    println(" 3. List All Albumlists".green.bold)
+    println(" 4. Search Albumlists".green.bold)
+    println(" 5. Delete Albumlist".green.bold)
+    println("-1. Exit".red.bold)
+    println()
+    print("Enter Option : ".yellow.bold.italic)
+}
         input = readLine()!!
         option = if (input.toIntOrNull() != null && !input.isEmpty())
             input.toInt()
