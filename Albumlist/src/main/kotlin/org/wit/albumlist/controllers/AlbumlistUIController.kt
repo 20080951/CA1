@@ -15,12 +15,27 @@ class AlbumlistUIController : Controller() {
     init {
         logger.info { "Launching Placemark TornadoFX UI App" }
     }
-    fun add(_title : String, _description : String){
+    fun add(_title : String, _description : String, _duration : String){
 
 
-        var aAlbumlist = AlbumlistModel(title = _title, description = _description)
+        var aAlbumlist = AlbumlistModel(title = _title, description = _description, duration = _duration)
         albumlists.create(aAlbumlist)
         logger.info("Placemark Added")
+    }
+    fun deleteAlbum(){
+        fun delete() {
+            albumlistView.listAlbumlists(albumlists)
+            var searchId = albumlistView.getId()
+            val aAlbumlist = search(searchId)
+
+            if(aAlbumlist != null) {
+                albumlists.delete(aAlbumlist)
+                println("Albumlist Deleted...")
+                albumlistView.listAlbumlists(albumlists)
+            }
+            else
+                println("Albumlist Not Deleted...")
+        }
     }
 
     fun loadListScreen() {

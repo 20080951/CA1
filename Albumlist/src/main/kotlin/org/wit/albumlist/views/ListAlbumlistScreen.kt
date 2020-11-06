@@ -17,6 +17,7 @@ class ListAlbumlistScreen : View("List Placemarks") {
             readonlyColumn("ID", AlbumlistModel::id)
             readonlyColumn("TITLE", AlbumlistModel::title)
             readonlyColumn("DESCRIPTION", AlbumlistModel::description)
+            readonlyColumn("Duration", AlbumlistModel::duration)
         }
         button("Close") {
             useMaxWidth = true

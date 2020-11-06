@@ -48,6 +48,7 @@ class AlbumlistJSONStore : AlbumlistStore {
         if (foundAlbumlist != null) {
             foundAlbumlist.title = albumlist.title
             foundAlbumlist.description = albumlist.description
+            foundAlbumlist.duration = albumlist.duration
         }
         serialize()
     }

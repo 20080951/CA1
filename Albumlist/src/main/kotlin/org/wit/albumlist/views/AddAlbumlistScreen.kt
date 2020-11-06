@@ -7,20 +7,24 @@ import org.wit.albumlist.controllers.AlbumlistUIController
 import tornadofx.*
 import kotlin.reflect.KClass
 
-class AddAlbumlistScreen : View("Add Placemark") {
+class AddAlbumlistScreen : View("Add Album ") {
     val model = ViewModel()
     val _title = model.bind { SimpleStringProperty() }
     val _description = model.bind { SimpleStringProperty() }
+    val _duration = model.bind { SimpleStringProperty() }
     val albumlistUIController: AlbumlistUIController by inject()
 
     override val root = form {
         setPrefSize(600.0, 200.0)
         fieldset(labelPosition = Orientation.VERTICAL) {
-            field("Title") {
+            field("Artist Name") {
                 textfield(_title).required()
             }
-            field("Description") {
+            field("Album Description") {
                 textarea(_description).required()
+            }
+            field("Duration") {
+                textfield(_duration).required()
             }
             button("Add") {
                 enableWhen(model.valid)
@@ -28,7 +32,7 @@ class AddAlbumlistScreen : View("Add Placemark") {
                 useMaxWidth = true
                 action {
                     runAsyncWithProgress {
-                        albumlistUIController.add(_title.toString(),_description.toString())
+                        albumlistUIController.add(_title.value,_description.value,_duration.value)
 
                     }
                 }
@@ -47,6 +51,7 @@ class AddAlbumlistScreen : View("Add Placemark") {
     override fun onDock() {
         _title.value = ""
         _description.value = ""
+        _duration.value = ""
         model.clearDecorators()
     }
 }

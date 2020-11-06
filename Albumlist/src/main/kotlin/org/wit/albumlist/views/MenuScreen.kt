@@ -5,7 +5,7 @@ import javafx.geometry.Orientation
 import org.wit.albumlist.controllers.AlbumlistUIController
 import tornadofx.*
 
-class MenuScreen : View("Albumlist Main Menu") {
+class MenuScreen : View("Album List Main Menu") {
 
     val AlbumlistUIController: AlbumlistUIController by inject()
 
@@ -13,7 +13,7 @@ class MenuScreen : View("Albumlist Main Menu") {
         setPrefSize(400.0, 200.0)
         fieldset(labelPosition = Orientation.VERTICAL) {
             text("")
-            button("Add Albumlist") {
+            button("Add to Album list") {
 
                 isDefaultButton = true
                 useMaxWidth = true
@@ -24,13 +24,24 @@ class MenuScreen : View("Albumlist Main Menu") {
                 }
             }
             text("")
-            button("List Albumlists") {
+            button("List Albums") {
 
                 isDefaultButton = true
                 useMaxWidth = true
                 action {
                     runAsyncWithProgress {
                         AlbumlistUIController.loadListScreen()
+                    }
+                }
+            }
+            text("")
+            button("List Albums") {
+
+                isDefaultButton = true
+                useMaxWidth = true
+                action {
+                    runAsyncWithProgress {
+                        AlbumlistUIController.deleteAlbum()
                     }
                 }
             }

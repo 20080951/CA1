@@ -52,24 +52,31 @@ colored {
         albumlist.title = readLine()!!
         print("Enter a Description : ")
         albumlist.description = readLine()!!
+        print("Enter a Duration : ")
+        albumlist.duration = readLine()!!
 
-        return albumlist.title.isNotEmpty() && albumlist.description.isNotEmpty()
+        return albumlist.title.isNotEmpty() && albumlist.description.isNotEmpty() && albumlist.duration.isNotEmpty()
     }
 
     fun updateAlbumlistData(albumlist : AlbumlistModel) : Boolean {
 
         var tempTitle: String?
         var tempDescription: String?
+        var tempDuration: String?
 
         if (albumlist != null) {
             print("Enter a new Title for [ " + albumlist.title + " ] : ")
             tempTitle = readLine()!!
             print("Enter a new Description for [ " + albumlist.description + " ] : ")
             tempDescription = readLine()!!
+            print("Enter a new Description for [ " + albumlist.duration + " ] : ")
+            tempDuration = readLine()!!
 
             if (!tempTitle.isNullOrEmpty() && !tempDescription.isNullOrEmpty()) {
                 albumlist.title = tempTitle
                 albumlist.description = tempDescription
+                albumlist.duration = tempDuration
+
                 return true
             }
         }
